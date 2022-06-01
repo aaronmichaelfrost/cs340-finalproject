@@ -24,8 +24,8 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 CREATE TABLE Products (
   productId int(9) NOT NULL AUTO_INCREMENT,
-  name varchar(255) NOT NULL,
-  price decimal unsigned,
+  productName varchar(255) NOT NULL,
+  price decimal(30,2) unsigned NOT NULL,
   PRIMARY KEY (productId)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
@@ -66,6 +66,14 @@ CREATE TABLE IF NOT EXISTS `OrderProducts` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+
+
+DESCRIBE Products;
+DESCRIBE Customers;
+DESCRIBE OrderProducts;
+DESCRIBE Orders;
+
 LOCK TABLES Customers WRITE;
 
 INSERT INTO Customers VALUES (1,'hello@gmail.com','541777444','John','Oranu','2001-12-11'),
@@ -76,9 +84,9 @@ UNLOCK TABLES;
 
 LOCK TABLES Products WRITE;
 
-INSERT INTO Products VALUES (1,'survival game',22.99),
-(2,'horror game',33.99),
-(3,'racing game',44.99);
+INSERT INTO Products VALUES (1,'survival game','22.99'),
+(2,'horror game','33.99'),
+(3,'racing game','44.99');
 
 UNLOCK TABLES;
 
@@ -97,16 +105,16 @@ INSERT INTO Orders (date, customerId) VALUES (
 
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2000-01-01 10:45:23' AND customerId='1'),
-	(SELECT productId FROM Products WHERE name='survival game' AND price='22.99'),
+	(SELECT productId FROM Products LIMIT 1),
     '5'
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2005-02-10 10:45:23' AND customerId='2'),
-	(SELECT productId FROM Products WHERE name='horror game' AND price='33.99'),
+	(SELECT productId FROM Products WHERE productName='horror game' AND price='33.99'),
     '10'
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2009-03-20 10:45:23' AND customerId='3'),
-	(SELECT productId FROM Products WHERE name='racing game' AND price='44.99'),
+	(SELECT productId FROM Products WHERE productName='racing game' AND price='44.99'),
     '16'
 );
