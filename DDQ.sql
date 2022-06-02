@@ -56,8 +56,6 @@ CREATE TABLE IF NOT EXISTS `OrderProducts` (
     
 	`productId` int(11) NOT NULL,  
 
-	`quantity` int(5),
-
 	PRIMARY KEY (`orderProductId`), 
 
 	FOREIGN KEY (`orderId`) REFERENCES `Orders` (`orderId`),
@@ -65,7 +63,6 @@ CREATE TABLE IF NOT EXISTS `OrderProducts` (
 	FOREIGN KEY (`productId`) REFERENCES `Products` (`productId`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 
@@ -105,16 +102,13 @@ INSERT INTO Orders (date, customerId) VALUES (
 
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2000-01-01 10:45:23' AND customerId='1'),
-	(SELECT productId FROM Products LIMIT 1),
-    '5'
+	(SELECT productId FROM Products WHERE productName='survival game' AND price='29.99')
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2005-02-10 10:45:23' AND customerId='2'),
-	(SELECT productId FROM Products WHERE productName='horror game' AND price='33.99'),
-    '10'
+	(SELECT productId FROM Products WHERE productName='horror game' AND price='33.99')
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
 	(SELECT orderId FROM Orders WHERE date='2009-03-20 10:45:23' AND customerId='3'),
-	(SELECT productId FROM Products WHERE productName='racing game' AND price='44.99'),
-    '16'
+	(SELECT productId FROM Products WHERE productName='racing game' AND price='44.99')
 );
