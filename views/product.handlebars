@@ -10,7 +10,7 @@
 <br/>
 
 <form id="updateproduct" action="/product" method="post">
-    ProductID: <input type="text" name="productID"><br>
+    ProductID: <input type="text" name="productId"><br>
     Name: <input type="text" name="name"><br>
     Price: <input type="text" name="price"><br>
     <input type="submit" value="Submit">
@@ -18,18 +18,18 @@
 <br/>
 
 <form id="deleteproduct" action="/product" method="post">
-    ProductID: <input type="text" name="productID"><br>
+    ProductID: <input type="text" name="productId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
 <form id="filterproduct" action="/product" method="post">
-    ProductID: <input type="text" name="productID"><br>
+    ProductID: <input type="text" name="productId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-  <h3>Current products:</h3>
+<h3>Current products:</h3>
   <table>
     <thead> 
         <th>ProductID</th>
@@ -38,7 +38,7 @@
     </thead> 
 
     <tbody>
-        {{#each customer}} 
+        {{#each product}} 
         <tr> 
             <td>{{ProductID}}</td> 
             <td>{{Name}}</td> 

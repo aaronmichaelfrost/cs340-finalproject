@@ -18,10 +18,10 @@ app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
-app.use('/customers', require('./customers.js'));
-app.use('/orders', require('./orders.js'));
-app.use('/products', require('./products.js'));
-app.use('/orderProducts', require('./orderProducts.js'));
+app.use('/customer', require('./customer.js'));
+app.use('/order', require('./order.js'));
+app.use('/product', require('./product.js'));
+app.use('/orderProduct', require('./orderProduct.js'));
 app.use('/', express.static('public'));
 
 app.use(function(req,res){
