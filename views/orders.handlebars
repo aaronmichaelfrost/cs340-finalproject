@@ -1,26 +1,26 @@
 <html>
 <body>
 
-<form id="addorder" action="/order" method="post">
+<form id="addorder" action="/order/add" method="post">
     Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="updateorder" action="/order" method="post">
+<form id="updateorder" action="/order/update" method="post">
     Order ID: <input type="number" name="orderId"><br>
     Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="deleteorder" action="/order" method="post">
+<form id="deleteorder" action="/order/delete" method="post">
   Order ID: <input type="number" name="orderId"><br>
   <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="filterorder" action="/order" method="post">
+<form id="filterorder" action="/order/filter" method="post">
     Customer ID: <input type="number" name="customerId" id="orderFilter"><br>
     <input type="submit" value="Submit">
 </form>
