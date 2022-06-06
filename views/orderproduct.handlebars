@@ -1,0 +1,25 @@
+
+<html>
+
+<body>
+<h3>Current OrderProducts:</h3>
+  <table>
+    <thead> 
+        <th>OrderProductId</th>
+        <th>OrderId</th>
+        <th>ProductId</th>
+    </thead> 
+
+    <tbody>
+        {{#each orderProduct}} 
+        <tr> 
+            <td>{{orderProductId}}</td> 
+            <td>{{orderId}}</td> 
+            <td>{{productId}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table>
+
+</body>
+</html>
