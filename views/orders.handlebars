@@ -1,0 +1,46 @@
+<html>
+<body>
+
+<form id="addorder" action="/order" method="post">
+    Customer ID: <input type="number" name="customerId"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<form id="updateorder" action="/order" method="post">
+    Order ID: <input type="number" name="orderId"><br>
+    Customer ID: <input type="number" name="customerId"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<form id="deleteorder" action="/order" method="post">
+  Order ID: <input type="number" name="orderId"><br>
+  <input type="submit" value="Submit">
+</form>
+<br/>
+
+<form id="filterorder" action="/order" method="post">
+    Customer ID: <input type="number" name="customerId"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<table>
+    <thead> 
+        <th>orderId</th>
+        <th>customerId</th>
+    </thead> 
+
+    <tbody>
+        {{#each order}} 
+        <tr> 
+           <td>{{orderId}}</td>  
+           <td>{{customerId}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table>
+
+</body>
+</html>
