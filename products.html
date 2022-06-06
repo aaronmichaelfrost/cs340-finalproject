@@ -1,61 +1,52 @@
-<!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
 <body>
-  <label>Create Product: </label><br><br>
-  <label>Name:</label>
-  <input type="text"><br><br>
 
-  <label>Price:</label>
-  <input type="text"><br><br>
+<form id="addproduct" action="/product" method="post">
+    Name: <input type="text" name="name"><br>
+    Price: <input type="text" name="price"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
 
-  <input type="submit" value="Submit"><br><br>
+<form id="updatecustomer" action="/customer" method="post">
+    ProductID: <input type="text" name="productID"><br>
+    Name: <input type="text" name="name"><br>
+    Price: <input type="text" name="price"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
 
-  <label>Update Product: </label><br><br>
+<form id="deletecustomer" action="/customer" method="post">
+    ProductID: <input type="text" name="productID"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
 
-  <label>Product ID:</label>
-  <input type="text"><br><br>
-  
-  <label>Name:</label>
-  <input type="text"><br><br>
+<form id="filtercustomer" action="/customer" method="post">
+    ProductID: <input type="text" name="productID"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
 
-  <label>Price:</label>
-  <input type="text"><br><br>
-
-  <input type="submit" value="Update"><br><br>
-
-  <label>Delete Products: </label><br><br>
-
-  <label>Product ID:</label>
-  <input type="text"><br><br>
-  <input type="submit" value="Delete">
-  
-  <br><br><label>Search / Filter: </label><br><br>
-  <label>Filter:</label>
-  <input type="text">
-  <input type="submit" value="Search">
-
+  <h3>Current products:</h3>
   <table>
-    <tr>
-      <th>productID</th>
-      <th>name</th>
-      <th>price</th>
-    </tr>
-  
-    <tr>
-      <td>1</td>
-      <td>t-rex</td>
-      <td>10</td>
-    </tr>
-  </table>
+    <thead> 
+        <th>ProductID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </thead> 
+
+    <tbody>
+        {{#each customer}} 
+        <tr> 
+            <td>{{ProductID}}</td> 
+            <td>{{Name}}</td> 
+            <td>{{Price}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table>
 
 </body>
-
 </html>
