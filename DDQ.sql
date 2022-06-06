@@ -35,8 +35,6 @@ SET character_set_client = @saved_cs_client;
 CREATE TABLE IF NOT EXISTS `Orders` (
 
 	`orderId` int(11) NOT NULL AUTO_INCREMENT,
-
-	`date` dateTime NOT NULL,
     
 	`customerID` int(9) NOT NULL,    
 
@@ -65,7 +63,6 @@ CREATE TABLE IF NOT EXISTS `OrderProducts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
 DESCRIBE Products;
 DESCRIBE Customers;
 DESCRIBE OrderProducts;
@@ -73,9 +70,9 @@ DESCRIBE Orders;
 
 LOCK TABLES Customers WRITE;
 
-INSERT INTO Customers VALUES (1,'hello@gmail.com','541777444','John','Oranu','2001-12-11'),
-(2,'hello@gmail.com','534777444','Mike','Oranu','2001-12-11'),
-(3,'hello@gmail.com','541342444','Peter','Hemsworth','2001-12-11');
+INSERT INTO Customers VALUES (1,'hello@gmail.com','541777444','John','Oranu'),
+(2,'hello@gmail.com','534777444','Mike','Oranu'),
+(3,'hello@gmail.com','541342444','Peter','Hemsworth');
 
 UNLOCK TABLES;
 
@@ -87,28 +84,25 @@ INSERT INTO Products VALUES (1,'survival game','22.99'),
 
 UNLOCK TABLES;
 
-INSERT INTO Orders (date, customerId) VALUES (
-	'2000-01-01 10:45:23',
+INSERT INTO Orders (customerId) VALUES (
     (SELECT customerId FROM Customers WHERE email='hello@gmail.com' AND cell='541777444' AND  firstName='John' AND lastName='Oranu')
 );
-INSERT INTO Orders (date, customerId) VALUES (
-	'2005-02-10 10:45:23',
+INSERT INTO Orders (customerId) VALUES (
 	(SELECT customerId FROM Customers WHERE email='hello@gmail.com' AND cell='534777444' AND  firstName='Mike' AND lastName='Oranu')
 );
-INSERT INTO Orders (date, customerId) VALUES (
-	'2009-03-20 10:45:23',
+INSERT INTO Orders (customerId) VALUES (
 	(SELECT customerId FROM Customers WHERE email='hello@gmail.com' AND cell='541342444' AND  firstName='Peter' AND lastName='Hemsworth')
 );
 
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
-	(SELECT orderId FROM Orders WHERE date='2000-01-01 10:45:23' AND customerId='1'),
+	(SELECT orderId FROM Orders WHERE  customerId='1'),
 	(SELECT productId FROM Products WHERE productName='survival game' AND price='29.99')
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
-	(SELECT orderId FROM Orders WHERE date='2005-02-10 10:45:23' AND customerId='2'),
+	(SELECT orderId FROM Orders WHERE  customerId='2'),
 	(SELECT productId FROM Products WHERE productName='horror game' AND price='33.99')
 );
 INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
-	(SELECT orderId FROM Orders WHERE date='2009-03-20 10:45:23' AND customerId='3'),
+	(SELECT orderId FROM Orders WHERE customerId='3'),
 	(SELECT productId FROM Products WHERE productName='racing game' AND price='44.99')
 );
