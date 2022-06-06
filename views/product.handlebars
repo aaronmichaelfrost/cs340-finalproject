@@ -2,14 +2,14 @@
 
 <body>
 
-<form id="addproduct" action="/product" method="post">
+<form id="addproduct" action="/product/add" method="post">
     Name: <input type="text" name="name"><br>
     Price: <input type="text" name="price"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="updateproduct" action="/product" method="post">
+<form id="updateproduct" action="/product/update" method="post">
     ProductID: <input type="text" name="productId"><br>
     Name: <input type="text" name="name"><br>
     Price: <input type="text" name="price"><br>
@@ -17,13 +17,13 @@
 </form>
 <br/>
 
-<form id="deleteproduct" action="/product" method="post">
+<form id="deleteproduct" action="/product/delete" method="post">
     ProductID: <input type="text" name="productId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="filterproduct" action="/product" method="post">
+<form id="filterproduct" action="/product/filter" method="post">
     ProductID: <input type="text" name="productId" id="productFilter"><br>
     <input type="submit" value="Submit">
 </form>
