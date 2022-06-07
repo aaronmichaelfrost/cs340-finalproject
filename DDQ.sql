@@ -10,13 +10,12 @@ SET character_set_client = utf8;
 CREATE TABLE Customers (
   customerId int(9) NOT NULL AUTO_INCREMENT,
   email varchar(255) NOT NULL,
-  cell int(10),
+  cell bigint(11),
   firstName varchar(255),
   lastName varchar(255),
-  birthDate date,
 
   PRIMARY KEY (customerId)
-  ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
 
@@ -27,7 +26,7 @@ CREATE TABLE Products (
   productName varchar(255) NOT NULL,
   price decimal(30,2) unsigned NOT NULL,
   PRIMARY KEY (productId)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
 
@@ -36,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Orders` (
 
 	`orderId` int(11) NOT NULL AUTO_INCREMENT,
     
-	`customerID` int(9) NOT NULL,    
+	`customerId` int(9) NOT NULL,    
 
 	PRIMARY KEY (`orderId`),
 
@@ -94,15 +93,15 @@ INSERT INTO Orders (customerId) VALUES (
 	(SELECT customerId FROM Customers WHERE email='hello@gmail.com' AND cell='541342444' AND  firstName='Peter' AND lastName='Hemsworth')
 );
 
-INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
-	(SELECT orderId FROM Orders WHERE  customerId='1'),
-	(SELECT productId FROM Products WHERE productName='survival game' AND price='29.99')
+INSERT INTO OrderProducts (orderId, productId) VALUES (
+	(SELECT orderId FROM Orders WHERE customerId='1'),
+	(SELECT productId FROM Products WHERE productName='survival game' AND price='22.99')
 );
-INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
+INSERT INTO OrderProducts (orderId, productId) VALUES (
 	(SELECT orderId FROM Orders WHERE  customerId='2'),
 	(SELECT productId FROM Products WHERE productName='horror game' AND price='33.99')
 );
-INSERT INTO OrderProducts (orderId, productId, quantity) VALUES (
+INSERT INTO OrderProducts (orderId, productId) VALUES (
 	(SELECT orderId FROM Orders WHERE customerId='3'),
 	(SELECT productId FROM Products WHERE productName='racing game' AND price='44.99')
 );

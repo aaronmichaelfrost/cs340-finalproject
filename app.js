@@ -3,6 +3,8 @@
     handlebars for HTML templates
 */
 
+require('util.promisify').shim();
+
 var express = require('express');
 var mysql = require('./dbconn.js');
 var bodyParser = require('body-parser');
@@ -16,12 +18,15 @@ app.engine('handlebars', handlebars.engine);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
-app.set('port', process.argv[2]);
+app.set('port', 9082);
 app.set('mysql', mysql);
+
+// Route URLs
 app.use('/customer', require('./customer.js'));
 app.use('/order', require('./order.js'));
 app.use('/product', require('./product.js'));
 app.use('/orderProduct', require('./orderProduct.js'));
+
 app.use('/', express.static('public'));
 
 app.use(function(req,res){
@@ -34,6 +39,7 @@ app.use(function(err, req, res, next){
   res.status(500);
   res.render('500');
 });
+
 
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');

@@ -1,8 +1,23 @@
-
 <html>
 
 <body>
-<h3>Current OrderProducts:</h3>
+
+<h2>Create OrderProduct</h2>
+<form action="/orderproduct/add" method="post">
+    Product ID: <input type="number" name="productId"><br>
+    Order ID: <input type="number" name="orderId"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<h2>Delete OrderProduct</h2>
+<form action="/orderproduct/delete" method="post">
+    OrderProduct ID: <input type="number" name="orderProductId"><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<h2>Current OrderProducts:</h3>
   <table>
     <thead> 
         <th>OrderProductId</th>
@@ -20,6 +35,12 @@
         {{/each}} 
     </tbody> 
 </table>
+
+<br/>
+<a href="/orderProduct">Refresh</a>
+
+<br/>
+<a href="/">Back to main menu</a>
 
 </body>
 </html>

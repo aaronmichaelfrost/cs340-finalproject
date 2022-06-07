@@ -1,31 +1,41 @@
 <html>
 <body>
 
-<form id="addorder" action="/order/add" method="post">
+
+<h2>Create Order</h2>
+<form action="/order/add" method="post">
     Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="updateorder" action="/order/update" method="post">
+
+<h2>Update Order</h2>
+<form action="/order/update" method="post">
     Order ID: <input type="number" name="orderId"><br>
     Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="deleteorder" action="/order/delete" method="post">
+
+<h2>Delete Order</h2>
+<form action="/order/delete" method="post">
   Order ID: <input type="number" name="orderId"><br>
   <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="filterorder" action="/order/filter" method="post">
-    Customer ID: <input type="number" name="customerId" id="orderFilter"><br>
+
+<h2>Filter Order</h2>
+<form action="/order/filter" method="post">
+    Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
+
+<h2>Current Orders</h2>
 <table>
     <thead> 
         <th>orderId</th>
@@ -41,6 +51,12 @@
         {{/each}} 
     </tbody> 
 </table>
+
+<br/>
+<a href="/order">Refresh</a>
+
+<br/>
+<a href="/">Back to main menu</a>
 
 </body>
 </html>

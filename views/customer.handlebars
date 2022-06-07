@@ -2,7 +2,8 @@
 
 <body>
 
-<form id="addcustomer" action="/customer/add" method="post">
+<h2>Create Customer</h2>
+<form action="/customer/add" method="post">
     First name: <input type="text" name="firstName"><br>
     Email: <input type="text" name="email"><br>
     Last name: <input type="text" name="lastName"><br>
@@ -11,7 +12,9 @@
 </form>
 <br/>
 
-<form id="updatecustomer" action="/customer/update" method="post">
+
+<h2>Update Customer</h2>
+<form action="/customer/update" method="post">
     Customer ID: <input type="number" name="customerId"><br>
     First name: <input type="text" name="firstName"><br>
     Email: <input type="text" name="email"><br>
@@ -21,18 +24,22 @@
 </form>
 <br/>
 
-<form id="deletecustomer" action="/customer/delete" method="post">
+<h2>Delete Customer</h2>
+<form action="/customer/delete" method="post">
     Customer ID: <input type="number" name="customerId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="filtercustomer" action="/customer/filter" method="post">
-    Last name: <input type="text" name="lastName" id="customerFilter"><br>
+<h2>Filter Customer</h2>
+<form action="/customer/filter" method="post">
+    Last name: <input type="text" name="lastName"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
+
+<h2>Current Customers</h2>
 <table>
     <thead> 
         <th>customerId</th>
@@ -54,6 +61,12 @@
         {{/each}} 
     </tbody> 
 </table>
+
+<br/>
+<a href="/customer">Refresh</a>
+
+<br/>
+<a href="/">Back to main menu</a>
 
 </body>
 </html>

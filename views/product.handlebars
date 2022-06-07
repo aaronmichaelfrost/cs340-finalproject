@@ -2,28 +2,35 @@
 
 <body>
 
-<form id="addproduct" action="/product/add" method="post">
-    Name: <input type="text" name="name"><br>
+
+<h2>Create Product</h2>
+<form action="/product/add" method="post">
+    Name: <input type="text" name="productName"><br>
     Price: <input type="text" name="price"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="updateproduct" action="/product/update" method="post">
+
+<h2>Update Product</h2>
+<form action="/product/update" method="post">
     ProductID: <input type="text" name="productId"><br>
-    Name: <input type="text" name="name"><br>
+    Name: <input type="text" name="productName"><br>
     Price: <input type="text" name="price"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="deleteproduct" action="/product/delete" method="post">
+
+<h2>Delete Product</h2>
+<form action="/product/delete" method="post">
     ProductID: <input type="text" name="productId"><br>
     <input type="submit" value="Submit">
 </form>
 <br/>
 
-<form id="filterproduct" action="/product/filter" method="post">
+<h2>Filter Product</h2>
+<form action="/product/filter" method="post">
     ProductID: <input type="text" name="productId"><br>
     <input type="submit" value="Submit">
 </form>
@@ -41,12 +48,18 @@
         {{#each products}} 
         <tr> 
             <td>{{productId}}</td> 
-            <td>{{name}}</td> 
+            <td>{{productName}}</td> 
             <td>{{price}}</td> 
         </tr> 
         {{/each}} 
     </tbody> 
 </table>
+
+<br/>
+<a href="/product">Back</a>
+
+<br/>
+<a href="/">Back to main menu</a>
 
 </body>
 </html>
