@@ -1,9 +1,9 @@
 **INSTRUCTIONS**
 
 -- First, install the required packages:
->npm install node
->npm install express
->npm install express-handlebars
+>npm install node\n
+>npm install express\n
+>npm install express-handlebars\n
 
 -- Then, start the webserver
 >node app.js
